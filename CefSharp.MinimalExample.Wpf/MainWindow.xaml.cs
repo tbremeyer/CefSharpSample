@@ -7,7 +7,8 @@ namespace CefSharp.MinimalExample.Wpf
 {
     public partial class MainWindow : Window
     {
-        private bool _firstTime = true;
+        private int _maxCalls = 10;
+        private int _callsPerformed = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace CefSharp.MinimalExample.Wpf
 
         private async Task CallWebSite()
         {
-            if (!_firstTime) return;
+            if (_callsPerformed > _maxCalls) return;
             var executingAssembly = Assembly.GetExecutingAssembly();
             var resourcePath = "CefSharp.MinimalExample.Wpf" + ".web.index.html";
 
@@ -37,7 +38,7 @@ namespace CefSharp.MinimalExample.Wpf
             }
 
             var result = await Browser.EvaluateScriptAsync($"httpGet('http://httpbin.org/basic-auth/undefined/undefined?accept=json')");
-            _firstTime = false;
+            _callsPerformed++;
         }
     }
 }
