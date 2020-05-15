@@ -21,7 +21,6 @@ namespace CefSharp.MinimalExample.Wpf
             return true;
         }
 
-
         protected override void OnRenderProcessTerminated(IWebBrowser chromiumWebBrowser, IBrowser browser, CefTerminationStatus status)
         {
             chromiumWebBrowser.Reload();

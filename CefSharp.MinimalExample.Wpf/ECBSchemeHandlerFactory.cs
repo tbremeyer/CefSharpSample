@@ -11,13 +11,13 @@ namespace CefSharp.MinimalExample.Wpf
         {
             Debug.WriteLine("Constructor");
         }
-        
+
         public IResourceHandler Create(IBrowser browser, IFrame frame, string schemeName, IRequest request)
         {
             var uri = new Uri(request.Url);
             var file = uri.Authority + uri.AbsolutePath;
             var executingAssembly = Assembly.GetExecutingAssembly();
-            var resourcePath = "CefSharp.MinimalExample.Wpf" + "." + file.Replace("/", ".");
+            var resourcePath = "CefSharp.MinimalExample.Wpf." + file.Replace("/", ".");
 
             if (executingAssembly.GetManifestResourceInfo(resourcePath) != null)
             {
@@ -26,12 +26,9 @@ namespace CefSharp.MinimalExample.Wpf
                 resourceStream.CopyTo(memoryStream);
                 resourceStream.Close();
                 memoryStream.Position = 0;
-                var fileText = new StreamReader(memoryStream).ReadToEnd();
-                Debug.WriteLine($"Read: {fileText}");
-                
-                memoryStream.Position = 0;
                 return ResourceHandler.FromStream(memoryStream);
             }
+
             return new ResourceHandler();
         }
     }

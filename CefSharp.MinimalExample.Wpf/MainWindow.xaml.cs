@@ -24,20 +24,6 @@ namespace CefSharp.MinimalExample.Wpf
         private async Task CallWebSite()
         {
             if (!_firstTime) return;
-            // var executingAssembly = Assembly.GetExecutingAssembly();
-            // var resourcePath = "CefSharp.MinimalExample.Wpf.web.index.html";
-            //
-            // if (executingAssembly.GetManifestResourceInfo(resourcePath) != null)
-            // {
-            //     var resourceStream = executingAssembly.GetManifestResourceStream(resourcePath);
-            //     var memoryStream = new MemoryStream();
-            //     await resourceStream.CopyToAsync(memoryStream);
-            //     resourceStream.Close();
-            //     memoryStream.Position = 0;
-            //     var fileText = await new StreamReader(memoryStream).ReadToEndAsync();
-            //     Browser.LoadHtml(fileText, true);
-            // }
-
             var result = await Browser.EvaluateScriptAsync($"httpGet('http://httpbin.org/basic-auth/undefined/undefined?accept=json')");
             _firstTime = false;
         }
