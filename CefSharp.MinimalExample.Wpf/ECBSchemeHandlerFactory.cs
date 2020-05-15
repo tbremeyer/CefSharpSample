@@ -7,6 +7,11 @@ namespace CefSharp.MinimalExample.Wpf
 {
     public class ECBSchemeHandlerFactory : ISchemeHandlerFactory
     {
+        public ECBSchemeHandlerFactory()
+        {
+            Debug.WriteLine("Constructor");
+        }
+        
         public IResourceHandler Create(IBrowser browser, IFrame frame, string schemeName, IRequest request)
         {
             var uri = new Uri(request.Url);

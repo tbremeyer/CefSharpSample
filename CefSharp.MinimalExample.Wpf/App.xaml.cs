@@ -15,6 +15,10 @@ namespace CefSharp.MinimalExample.Wpf
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
+            settings.SetOffScreenRenderingBestPerformanceArgs();
+            // settings.CachePath = ECBConfiguration.Instance.TemporaryBrowserFiles;
+            settings.MultiThreadedMessageLoop = true;
+            settings.RemoteDebuggingPort = 8088;
 
             //Example of setting a command line argument
             //Enables WebRTC

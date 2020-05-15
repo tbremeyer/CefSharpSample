@@ -4,8 +4,7 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public ICookieAccessFilter GetCookieAccessFilter(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request)
         {
-            var cookiesAccessFilter = new CookiesAccessFilter();
-            return cookiesAccessFilter;
+            return null;
         }
 
         public CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)
@@ -49,19 +48,6 @@ namespace CefSharp.MinimalExample.Wpf
         public bool OnProtocolExecution(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request)
         {
             return false;
-        }
-    }
-
-    public class CookiesAccessFilter : ICookieAccessFilter
-    {
-        public bool CanSendCookie(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, Cookie cookie)
-        {
-            return true;
-        }
-
-        public bool CanSaveCookie(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IResponse response, Cookie cookie)
-        {
-            return true;
         }
     }
 }
